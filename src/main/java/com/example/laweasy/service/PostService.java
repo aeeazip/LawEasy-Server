@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.example.laweasy.config.BaseException;
+import com.example.laweasy.config.BaseResponseStatus;
 import com.example.laweasy.domain.Member;
 import com.example.laweasy.domain.Post;
 import com.example.laweasy.dto.PostPostReqDto;
@@ -33,6 +34,7 @@ public class PostService {
 			Post newPost = Post.builder()
 				.title(postPostReqDto.getTitle())
 				.content(postPostReqDto.getContent())
+				.activated(true)
 				.resolveStatus(false)
 				.category(postPostReqDto.getCategory())
 				.member(member)
@@ -47,5 +49,22 @@ public class PostService {
 
 	public String createGptComment(String content) {
 		return "gpt 댓글 : " + content;
+	}
+
+	@Transactional
+	public void deletePost(Long postId) throws BaseException {
+		try {
+			Long memberId = jwtService.getMemberId();
+			Post post = postRepository.getReferenceById(postId);
+			if (post.getMember().getId() != memberId) {
+				throw new BaseException(BaseResponseStatus.INVALID_USER_JWT);
+			}
+			if (!post.isActivated()) {
+				throw new BaseException(BaseResponseStatus.DELETE_FAIL_POST);
+			}
+			post.updateActivated(false);
+		} catch (BaseException e) {
+			throw new BaseException(e.getStatus());
+		}
 	}
 }
