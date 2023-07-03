@@ -18,6 +18,7 @@ import com.example.laweasy.config.BaseResponse;
 import com.example.laweasy.config.BaseResponseStatus;
 import com.example.laweasy.domain.Category;
 import com.example.laweasy.domain.Post;
+import com.example.laweasy.dto.GetPostInfoResDto;
 import com.example.laweasy.dto.GetPostListResDto;
 import com.example.laweasy.dto.GetPostResDto;
 import com.example.laweasy.dto.PostPostReqDto;
@@ -25,6 +26,7 @@ import com.example.laweasy.dto.PostPostResDto;
 import com.example.laweasy.service.PostService;
 
 import lombok.RequiredArgsConstructor;
+import retrofit2.http.Path;
 
 @RestController
 @RequiredArgsConstructor
@@ -67,6 +69,9 @@ public class PostController {
 
 	/**
 	 * 게시글 전체 조회
+	 * @param page
+	 * @param category
+	 * @return
 	 */
 	@GetMapping("/{page}/{category}")
 	public BaseResponse<GetPostListResDto> getPosts(@PathVariable int page, @PathVariable Category category) {
@@ -77,4 +82,17 @@ public class PostController {
 		}
 	}
 
+	/**
+	 * 게시글 상세조회
+	 * @param postId
+	 * @return
+	 */
+	@GetMapping("/{postId}")
+	public BaseResponse<GetPostInfoResDto> getPostInfo(@PathVariable Long postId) {
+		try {
+			return new BaseResponse<>(postService.getPostInfo(postId));
+		} catch (BaseException exception) {
+			return new BaseResponse<>(exception.getStatus());
+		}
+	}
 }
