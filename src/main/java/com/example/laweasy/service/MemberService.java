@@ -45,7 +45,7 @@ public class MemberService {
             Member newMember = Member.builder()
                     .email(memberReqDto.getEmail())
                     .password(pwd)
-                    .role(memberReqDto.getRole() == "일반" ? Role.COMMON : Role.EXPERT)
+                    .role(memberReqDto.getRole().equals("일반") ? Role.COMMON : Role.EXPERT)
                     .nickname(memberReqDto.getNickname())
                     .build();
 

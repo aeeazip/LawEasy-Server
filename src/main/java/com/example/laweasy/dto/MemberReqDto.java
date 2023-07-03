@@ -1,5 +1,6 @@
 package com.example.laweasy.dto;
 
+import com.example.laweasy.domain.Role;
 import lombok.Data;
 
 @Data
