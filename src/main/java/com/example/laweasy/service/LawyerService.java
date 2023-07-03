@@ -2,6 +2,7 @@ package com.example.laweasy.service;
 
 import com.example.laweasy.config.BaseException;
 import com.example.laweasy.domain.Category;
+import com.example.laweasy.domain.Lawyer;
 import com.example.laweasy.dto.LawyerResDto;
 import com.example.laweasy.repository.LawyerRepository;
 import com.example.laweasy.utils.JwtService;

@@ -1,6 +1,7 @@
 package com.example.laweasy.domain;
 
 import com.example.laweasy.domain.core.BaseTimeEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
@@ -26,4 +27,10 @@ public class CommentLike extends BaseTimeEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_id")
     private Comment commentId;
+
+    @Builder
+    public CommentLike(Member memberId, Comment commentId) {
+        this.memberId = memberId;
+        this.commentId = commentId;
+    }
 }
