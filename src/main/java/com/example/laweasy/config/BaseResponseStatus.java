@@ -47,6 +47,11 @@ public enum BaseResponseStatus {
     FAILED_TO_LOGIN(false,3014,"없는 아이디거나 비밀번호가 틀렸습니다."),
     FAILED_TO_FIND_USER(false, 3015, "존재하지 않는 회원입니다. 회원가입이 필요합니다."),
 
+    EMPTY_POST_ID(false, 2030, "게시글 아이디 값을 확인해주세요."),
+    EMPTY_COMMENT_ID(false, 2031, "댓글 아이디 값을 확인해주세요."),
+    INVALID_USER_COMMENT(false, 2032, "사용자가 작성한 댓글이 아닙니다."),
+
+
 
 
     /**
