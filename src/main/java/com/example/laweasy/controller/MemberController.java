@@ -51,7 +51,7 @@ public class MemberController {
 
     // 로그인
     @PostMapping("/login")
-    public BaseResponse<LoginResDto> login(@RequestBody LoginReqDto loginReqDto) {
+    public BaseResponse<LoginResDto> login(@RequestBody LoginReqDto loginReqDto) throws BaseException {
         try {
             if (loginReqDto.getEmail() == null || loginReqDto.getPassword() == null)
                 return new BaseResponse<>(BaseResponseStatus.FAILED_TO_LOGIN);
