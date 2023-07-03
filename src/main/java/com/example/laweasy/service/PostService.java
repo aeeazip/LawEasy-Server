@@ -140,8 +140,9 @@ public class PostService {
 		}
 	}
 
-	public GetPostListResDto getPostsByMemberId(int page, Long memberId) throws BaseException {
+	public GetPostListResDto getPostsByMemberId(int page) throws BaseException {
 		try {
+			Long memberId = jwtService.getMemberId();
 			PageRequest pageRequest = PageRequest.of(page, 10);
 			Page<Post> posts = postRepository.findByMemberIdAndActivatedOrderByIdDesc(memberId, true, pageRequest);
 			List<GetPostResDto> GetPostResDto = posts.stream()

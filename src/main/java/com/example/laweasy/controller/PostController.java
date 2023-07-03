@@ -85,9 +85,9 @@ public class PostController {
 	}
 
 	@GetMapping
-	public BaseResponse<GetPostListResDto> getPostsByMemberId(@RequestParam int page, @RequestParam Long memberId) {
+	public BaseResponse<GetPostListResDto> getPostsByMemberId(@RequestParam int page) {
 		try {
-			return new BaseResponse<>(postService.getPostsByMemberId(page, memberId));
+			return new BaseResponse<>(postService.getPostsByMemberId(page));
 		} catch (BaseException exception) {
 			return new BaseResponse<>(exception.getStatus());
 		}
