@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/scraps")
+@CrossOrigin(origins = "http://43.202.93.57:8080")
 public class ScrapController {
     private final ScrapService scrapService;
 

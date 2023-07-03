@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/comments/like")
 @RestController
+@CrossOrigin(origins = "http://43.202.93.57:8080")
 public class CommentLikeController {
 
     private final CommentLikeService commentLikeService;

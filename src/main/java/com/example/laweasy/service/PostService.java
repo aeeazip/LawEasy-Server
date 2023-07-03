@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.handler.ExceptionHandlingWebHandler;
 
 import com.example.laweasy.config.BaseException;
 import com.example.laweasy.config.BaseResponseStatus;
@@ -20,6 +21,7 @@ import com.example.laweasy.domain.Category;
 import com.example.laweasy.domain.Comment;
 import com.example.laweasy.domain.Member;
 import com.example.laweasy.domain.Post;
+import com.example.laweasy.dto.GetPostInfoResDto;
 import com.example.laweasy.dto.GetPostListResDto;
 import com.example.laweasy.dto.GetPostResDto;
 import com.example.laweasy.dto.PostPostReqDto;
@@ -40,6 +42,7 @@ import lombok.RequiredArgsConstructor;
 public class PostService {
 	private final PostRepository postRepository;
 	private final MemberRepository memberRepository;
+	private final CommentService commentService;
 	private static final String MODEL = "gpt-3.5-turbo";
 
 	private OpenAiService openAiService;
@@ -119,5 +122,22 @@ public class PostService {
 		} catch (Exception e) {
 			throw new BaseException(DATABASE_ERROR);
 		}
+	}
+
+	public GetPostInfoResDto getPostInfo(Long postId) throws BaseException {
+		try {
+			Post post = postRepository.getReferenceById(postId);
+			return new GetPostInfoResDto(post.getTitle(),
+				post.getContent(),
+				post.getCategory(),
+				post.getCreatedAt(),
+				post.getGptComment(),
+				post.getMember().getNickname(),
+				commentService.getCommentList(postId));
+
+		} catch (Exception e) {
+			throw new BaseException(DATABASE_ERROR);
+		}
+
 	}
 }
