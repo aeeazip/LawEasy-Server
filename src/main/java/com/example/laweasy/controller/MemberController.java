@@ -1,9 +1,6 @@
 package com.example.laweasy.controller;
 
-import com.example.laweasy.dto.LoginReqDto;
-import com.example.laweasy.dto.LoginResDto;
-import com.example.laweasy.dto.MemberReqDto;
-import com.example.laweasy.dto.MemberResDto;
+import com.example.laweasy.dto.*;
 import com.example.laweasy.service.MailService;
 import com.example.laweasy.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -73,9 +70,10 @@ public class MemberController {
 
     // 이메일 인증
     @PostMapping("/certify")
-    public BaseResponse<String> certify(@RequestBody String email){
+    public BaseResponse<String> certify(@RequestBody EmailDto emailDto){
         try {
-            String code = this.mailService.sendMail(email);
+            System.out.println("email : " + emailDto.getEmail());
+            String code = mailService.sendMail(emailDto.getEmail());
             return new BaseResponse<>(code);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
