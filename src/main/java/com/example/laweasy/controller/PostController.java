@@ -11,6 +11,7 @@ import com.example.laweasy.config.BaseResponse;
 import com.example.laweasy.config.BaseResponseStatus;
 import com.example.laweasy.domain.Category;
 import com.example.laweasy.domain.Post;
+import com.example.laweasy.dto.GetPostInfoResDto;
 import com.example.laweasy.dto.GetPostListResDto;
 import com.example.laweasy.dto.GetPostResDto;
 import com.example.laweasy.dto.PostPostReqDto;
@@ -71,4 +72,15 @@ public class PostController {
 		}
 	}
 
+	/**
+	 * 게시글 상세정보
+	 */
+	@GetMapping("/{postId}")
+	public BaseResponse<GetPostInfoResDto> getPostInfo(@PathVariable Long postId) {
+		try {
+			return new BaseResponse<>(postService.getPostInfo(postId));
+		} catch (BaseException exception) {
+			return new BaseResponse<>(exception.getStatus());
+		}
+	}
 }
