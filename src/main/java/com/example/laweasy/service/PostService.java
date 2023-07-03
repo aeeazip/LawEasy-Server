@@ -111,7 +111,7 @@ public class PostService {
 			if (category == Category.ALL)
 				posts = postRepository.findByActivatedOrderByIdDesc(true, pageRequest);
 			else {
-				posts = postRepository.findByActivatedAndCategoryOrderByIdDesc(category, true, pageRequest);
+				posts = postRepository.findByCategoryAndActivatedOrderByIdDesc(category, true, pageRequest);
 			}
 			List<GetPostResDto> GetPostResDto = posts.stream()
 				.map(post -> new GetPostResDto(post.getId(), post.getTitle(), post.getCategory(), post.getCreatedAt(),

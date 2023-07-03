@@ -18,5 +18,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
 	Page<Post> findByActivatedOrderByIdDesc(boolean activated, Pageable pageable);
 
-	Page<Post> findByActivatedAndCategoryOrderByIdDesc(Category category, boolean activated, Pageable pageable);
+	Page<Post> findByCategoryAndActivatedOrderByIdDesc(Category category, boolean activated, Pageable pageable);
 }
