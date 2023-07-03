@@ -47,6 +47,9 @@ public class Post extends BaseTimeEntity {
 	@Enumerated(EnumType.STRING)
 	private Category category;
 
+	@Column(name = "gpt_comment", nullable = false)
+	private String gptComment;
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "member_id")
 	private Member member;
