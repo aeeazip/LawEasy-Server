@@ -49,6 +49,11 @@ public enum BaseResponseStatus {
 
     // [PATCH] /posts
     DELETE_FAIL_POST(false, 3016, "이미 삭제된 게시글입니다."),
+    EMPTY_POST_ID(false, 2030, "게시글 아이디 값을 확인해주세요."),
+    EMPTY_COMMENT_ID(false, 2031, "댓글 아이디 값을 확인해주세요."),
+    INVALID_USER_COMMENT(false, 2032, "사용자가 작성한 댓글이 아닙니다."),
+
+
 
     /**
      * 4000 : Database, Server 오류

@@ -17,17 +17,18 @@ public class Comment extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "comment_id")
     private Long commentId;
 
     @Column(nullable = false)
     private String content;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberId")
+    @JoinColumn(name = "member_id")
     private Member memberId;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "postId")
+    @JoinColumn(name = "post_id")
     private Post postId;
 
     @Column(nullable = false)
@@ -43,5 +44,9 @@ public class Comment extends BaseTimeEntity {
 
     public void changeStatus (String newStatus) {
         this.status = newStatus;
+    }
+
+    public void changeContent (String content) {
+        this.content = content;
     }
 }
