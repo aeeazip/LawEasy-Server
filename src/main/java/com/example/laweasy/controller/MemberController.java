@@ -4,6 +4,7 @@ import com.example.laweasy.dto.LoginReqDto;
 import com.example.laweasy.dto.LoginResDto;
 import com.example.laweasy.dto.MemberReqDto;
 import com.example.laweasy.dto.MemberResDto;
+import com.example.laweasy.service.MailService;
 import com.example.laweasy.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import static com.example.laweasy.utils.ValidationRegex.isRegexPassword;
 @RequestMapping("/members")
 public class MemberController {
     private final MemberService memberService;
+    private final MailService mailService;
 
     // 회원가입
     @PostMapping("/signup")
@@ -64,6 +66,17 @@ public class MemberController {
 
             LoginResDto loginResDto = memberService.login(loginReqDto);
             return new BaseResponse<>(loginResDto);
+        } catch (BaseException e) {
+            return new BaseResponse<>(e.getStatus());
+        }
+    }
+
+    // 이메일 인증
+    @PostMapping("/certify")
+    public BaseResponse<String> certify(@RequestBody String email){
+        try {
+            String code = this.mailService.sendMail(email);
+            return new BaseResponse<>(code);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
         }

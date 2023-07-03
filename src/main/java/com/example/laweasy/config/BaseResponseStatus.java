@@ -35,6 +35,7 @@ public enum BaseResponseStatus {
     POST_USERS_EMPTY_PASSWORD(false, 2018, "비밀번호를 입력해주세요."),
     POST_USERS_INVALID_ROLE(false, 2019, "일반이나 전문가 중 하나로 선택하세요"),
     POST_USERS_EMPTY_NICKNAME(false, 2020, "닉네임을 입력하세요"),
+    EMAIL_SEND_ERROR(false, 2021, "인증 메일을 보내는데 실패했습니다"),
 
     /**
      * 3000 : Response 오류
