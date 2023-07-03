@@ -7,6 +7,7 @@ import com.example.laweasy.domain.Scrap;
 import com.example.laweasy.dto.ScrapReqDto;
 import com.example.laweasy.dto.ScrapResDto;
 import com.example.laweasy.repository.MemberRepository;
+import com.example.laweasy.repository.PostRepository;
 import com.example.laweasy.repository.ScrapRepository;
 import com.example.laweasy.utils.JwtService;
 import lombok.RequiredArgsConstructor;
