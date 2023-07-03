@@ -124,7 +124,7 @@ public class CommentService {
 
         List<CommentResDto.CommentDto> commentResList = new ArrayList<>();
         //commentRepository에서 게시글 id가 postId인 거를 리스트에 담기
-        List<Comment> commentList = commentRepository.findAllByPostIdOrderByCommentId(postEntity.get());
+        List<Comment> commentList = commentRepository.findAllByPostIdAndStatusOrderByCommentId(postEntity.get(), "TRUE");
 
         if(commentList.size() == 0){
             return commentResList;

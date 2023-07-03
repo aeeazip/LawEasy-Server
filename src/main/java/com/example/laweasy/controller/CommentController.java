@@ -43,16 +43,16 @@ public class CommentController {
     }
 
     //댓글 삭제
-//    @ResponseBody
-//    @PostMapping("/{commentId}")
-//    public BaseResponse<String> deleteComment(@PathVariable Long commentId, @RequestBody String status){
-//        try{
-//            this.commentService.deleteComment(commentId, status);
-//            return new BaseResponse<>("댓글 삭제를 성공하였습니다.");
-//        } catch (BaseException e){
-//            return new BaseResponse<>(e.getStatus());
-//        }
-//    }
+    @ResponseBody
+    @PatchMapping("/")
+    public BaseResponse<String> deleteComment(@RequestParam Long commentId){
+        try{
+            this.commentService.deleteComment(commentId, "FALSE");
+            return new BaseResponse<>("댓글 삭제를 성공하였습니다.");
+        } catch (BaseException e){
+            return new BaseResponse<>(e.getStatus());
+        }
+    }
 
     // 댓글 조회
     @GetMapping("/{postId}")
