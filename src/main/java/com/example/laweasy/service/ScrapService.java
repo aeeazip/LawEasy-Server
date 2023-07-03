@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ public class ScrapService {
 
 
     // 스크랩 저장
+    @Transactional
     public ScrapResDto createScrap(ScrapReqDto scrapReqDto) throws BaseException {
         Long memberId = jwtService.getMemberId();
         log.info("로그인한 memberId : " + memberId);
