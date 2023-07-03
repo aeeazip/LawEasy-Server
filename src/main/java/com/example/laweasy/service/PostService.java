@@ -53,11 +53,9 @@ public class PostService {
 
 	@Transactional
 	public void deletePost(Long postId) throws BaseException {
-		Long memberId = jwtService.getMemberId();
-		Post post;
-
 		try {
-			post = postRepository.getReferenceById(postId);
+			Long memberId = jwtService.getMemberId();
+			Post post = postRepository.getReferenceById(postId);
 			if (post.getMember().getId() != memberId) {
 				throw new BaseException(BaseResponseStatus.INVALID_USER_JWT);
 			}
