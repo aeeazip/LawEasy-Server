@@ -33,7 +33,7 @@ public class CommentService {
     public void postComment(Long postId, String content) throws BaseException {
         //현재 로그인한 유저 확인
         Long memberId = jwtService.getMemberId();
-        System.out.println("memeberID: "+memberId);
+
         //Todo: memberRepository의 findMemberById 통일하기
         Member memberEntity = memberRepository.findMemberById(memberId);
 
