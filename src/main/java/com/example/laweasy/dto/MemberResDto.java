@@ -14,7 +14,6 @@ public class MemberResDto {
     private String password;
     private Role role;
     private String nickname;
-    private String jwt;
 
     @Builder
     public MemberResDto(Member member) {
@@ -22,6 +21,5 @@ public class MemberResDto {
         this.email = member.getEmail();
         this.password = member.getPassword();
         this.role = member.getRole();
-        this.nickname = member.getNickname();
     }
 }

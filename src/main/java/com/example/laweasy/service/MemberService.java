@@ -52,11 +52,9 @@ public class MemberService {
 
             Member member = memberRepository.save(newMember);
             log.info("save 완료");
-            String jwt = jwtService.createJwt(member.getId());
 
             MemberResDto memberResDto = new MemberResDto(memberRepository.findById(member.getId())
                     .orElseThrow(() -> new IllegalArgumentException("해당되는 member_id를 찾을 수 없습니다.")));
-            memberResDto.setJwt(jwt);
 
            return memberResDto;
         } catch (Exception e) {
