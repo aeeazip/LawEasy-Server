@@ -2,6 +2,7 @@ package com.example.laweasy.domain;
 
 import com.example.laweasy.domain.core.BaseTimeEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,4 +25,10 @@ public class Scrap extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private Post post;
+
+    @Builder
+    public Scrap(Member member, Post post) {
+        this.member = member;
+        this.post = post;
+    }
 }

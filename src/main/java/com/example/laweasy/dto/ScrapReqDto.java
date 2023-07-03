@@ -5,10 +5,10 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class LoginReqDto {
+public class ScrapReqDto {
     @NotBlank
-    private String email;
+    private Long memberId;
 
     @NotBlank
-    private String password;
+    private Long postId;
 }
