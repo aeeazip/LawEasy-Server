@@ -28,10 +28,6 @@ public class LawyerService {
         //	MEDICAL, LABOR, VIOLENCE,
         //	CYBER, TRAFFIC_ENVIRONMENT, CRIME,
         //	INSULT, HOME, ETC
-        System.out.println("category : " + category);
-
-        if(Category.HOME.equals(category))
-            System.out.println("HOME");
 
         if(!category.equals(Category.PROPERTY) && !category.equals(Category.FRAUD) && !category.equals(Category.MILITARY)
                 && !category.equals(Category.MEDICAL) && !category.equals(Category.LABOR) && !category.equals(Category.VIOLENCE)
