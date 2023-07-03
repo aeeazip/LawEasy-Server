@@ -138,6 +138,20 @@ public class PostService {
 		} catch (Exception e) {
 			throw new BaseException(DATABASE_ERROR);
 		}
+	}
 
+	public GetPostListResDto getPostsByMemberId(int page, Long memberId) throws BaseException {
+		try {
+			PageRequest pageRequest = PageRequest.of(page, 10);
+			Page<Post> posts = postRepository.findByMemberIdAndActivatedOrderByIdDesc(memberId, true, pageRequest);
+			List<GetPostResDto> GetPostResDto = posts.stream()
+				.map(post -> new GetPostResDto(post.getId(), post.getTitle(), post.getCategory(), post.getCreatedAt(),
+					post.getGptComment()))
+				.collect(Collectors.toList());
+
+			return new GetPostListResDto(GetPostResDto, posts.getTotalPages());
+		} catch (Exception e) {
+			throw new BaseException(DATABASE_ERROR);
+		}
 	}
 }
