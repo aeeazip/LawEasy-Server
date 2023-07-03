@@ -1,6 +1,8 @@
 package com.example.laweasy.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,7 @@ public class PostController {
 	private final PostService postService;
 
 	/**
-	 * 게시물 작성
+	 * 게시글 작성
 	 *
 	 * @param postPostReqDto
 	 * @return
@@ -37,8 +39,13 @@ public class PostController {
 		}
 	}
 
-	@PatchMapping
-	public BaseResponse<String> deletePost(@RequestParam Long postId) {
+	/**
+	 * 게시글 삭제
+	 * @param postId
+	 * @return
+	 */
+	@PatchMapping("/{postId}")
+	public BaseResponse<String> deletePost(@PathVariable Long postId) {
 		try {
 			postService.deletePost(postId);
 			String result = "게시글 삭제 성공";
@@ -47,4 +54,5 @@ public class PostController {
 			return new BaseResponse<>(exception.getStatus());
 		}
 	}
+
 }
