@@ -11,16 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-
 import com.example.laweasy.domain.core.BaseTimeEntity;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "post")
@@ -36,6 +37,9 @@ public class Post extends BaseTimeEntity {
 	@Column(name = "content", nullable = false)
 	private String content;
 
+	@Column(name = "activated", nullable = false)
+	private boolean activated;
+
 	@Column(name = "resolve_status", nullable = false)
 	private boolean resolveStatus;
 
@@ -47,12 +51,7 @@ public class Post extends BaseTimeEntity {
 	@JoinColumn(name = "member_id")
 	private Member member;
 
-	@Builder
-	public Post(String title, String content, boolean resolveStatus, Category category, Member member) {
-		this.title = title;
-		this.content = content;
-		this.resolveStatus = resolveStatus;
-		this.category = category;
-		this.member = member;
+	public void updateActivated(boolean activated) {
+		this.activated = activated;
 	}
 }

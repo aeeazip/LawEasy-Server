@@ -47,7 +47,8 @@ public enum BaseResponseStatus {
     FAILED_TO_LOGIN(false,3014,"없는 아이디거나 비밀번호가 틀렸습니다."),
     FAILED_TO_FIND_USER(false, 3015, "존재하지 않는 회원입니다. 회원가입이 필요합니다."),
 
-
+    // [PATCH] /posts
+    DELETE_FAIL_POST(false, 3016, "이미 삭제된 게시글입니다."),
 
     /**
      * 4000 : Database, Server 오류
