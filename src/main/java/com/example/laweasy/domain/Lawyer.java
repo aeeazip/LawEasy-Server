@@ -29,14 +29,22 @@ public class Lawyer extends BaseTimeEntity {
     @Column(nullable = false)
     private String category;
 
-    @Column(nullable = false)
-    private int price;
+    @Column(name = "phone_price", nullable = false)
+    private int phonePrice;
+
+    @Column(name = "video_price", nullable = false)
+    private int videoPrice;
+
+    @Column(name = "company", nullable = false)
+    private String company;
 
     @Builder
-    public Lawyer(String name, String description, String category, int price) {
+    public Lawyer(String name, String description, String category, int phonePrice, int videoPrice, String company) {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.price = price;
+        this.phonePrice = phonePrice;
+        this.videoPrice = videoPrice;
+        this.company = company;
     }
 }
