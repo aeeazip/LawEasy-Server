@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 import static com.example.laweasy.config.BaseResponseStatus.*;
 
 @Service
@@ -27,6 +29,7 @@ public class MemberService {
     private final JwtService jwtService;
 
     // 회원가입
+    @Transactional
     public MemberResDto signup(MemberReqDto memberReqDto) throws BaseException {
         if (checkEmail(memberReqDto.getEmail()) != null) {
             throw new BaseException(POST_USERS_EXISTS_EMAIL);
@@ -68,6 +71,7 @@ public class MemberService {
     }
 
     // 로그인
+    @Transactional
     public LoginResDto login(LoginReqDto loginReqDto) throws BaseException {
         Member member = memberRepository.findMemberByEmail(loginReqDto.getEmail());
 
