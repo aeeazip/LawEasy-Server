@@ -8,6 +8,7 @@ import com.example.laweasy.dto.LawyerResDto;
 import com.example.laweasy.service.LawyerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://43.202.93.57:8080")
 public class LawyerController {
     private final LawyerService lawyerService;
 

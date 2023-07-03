@@ -4,10 +4,7 @@ import com.example.laweasy.dto.*;
 import com.example.laweasy.service.MailService;
 import com.example.laweasy.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.laweasy.config.*;
 
 import static com.example.laweasy.utils.ValidationRegex.isRegexEmail;
@@ -16,6 +13,7 @@ import static com.example.laweasy.utils.ValidationRegex.isRegexPassword;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/members")
+@CrossOrigin(origins = "http://43.202.93.57:8080")
 public class MemberController {
     private final MemberService memberService;
     private final MailService mailService;
