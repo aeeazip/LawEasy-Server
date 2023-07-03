@@ -5,6 +5,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -12,6 +14,8 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name="member")
+@DynamicInsert
+@DynamicUpdate
 public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +28,7 @@ public class Member extends BaseTimeEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -37,5 +41,9 @@ public class Member extends BaseTimeEntity {
         this.password = password;
         this.role = role;
         this.nickname = nickname;
+    }
+
+    public void encryptPassword(String password) {
+        this.password = password;
     }
 }

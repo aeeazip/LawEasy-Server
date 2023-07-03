@@ -52,10 +52,11 @@ public class JwtService {
     @return int
     @throws BaseException
      */
-    public int getUserIdx() throws BaseException {
+    public Long getMemberId() throws BaseException {
         //1. JWT 추출
         String accessToken = getJwt();
         System.out.println(accessToken);
+
         if(accessToken == null || accessToken.length() == 0){
             throw new BaseException(EMPTY_JWT);
         }
@@ -72,7 +73,7 @@ public class JwtService {
         }
 
         // 3. memberId 추출
-        return claims.getBody().get("memberId",Integer.class);  // jwt 에서 memberId를 추출합니다.
+        return claims.getBody().get("memberId", Long.class);  // jwt 에서 memberId를 추출합니다.
     }
 
 }

@@ -33,8 +33,8 @@ public enum BaseResponseStatus {
     POST_USERS_INVALID_EMAIL(false, 2016, "정확한 이메일 주소를 입력해주세요"),
     POST_USERS_EXISTS_EMAIL(false,2017,"중복된 이메일입니다."),
     POST_USERS_EMPTY_PASSWORD(false, 2018, "비밀번호를 입력해주세요."),
-
-
+    POST_USERS_INVALID_ROLE(false, 2019, "일반이나 전문가 중 하나로 선택하세요"),
+    POST_USERS_EMPTY_NICKNAME(false, 2020, "닉네임을 입력하세요"),
 
     /**
      * 3000 : Response 오류
