@@ -17,10 +17,12 @@
 
 <br>
 <br>
+<br>
 
 ## 3️⃣ MVP 기능
 <img src="https://github.com/aeeazip/LawEasy-Server/assets/97737822/b14888c0-9c01-435b-8b70-8212d43107ee" width="1000" height="500" />
 
+<br>
 <br>
 <br>
 
@@ -29,7 +31,8 @@
 <img src="https://github.com/aeeazip/LawEasy-Server/assets/97737822/bb2d4dff-e43c-4775-bb90-c8323ca89936" width="1000" height="500" />
 
 
-<br><br>
+<br>
+<br>
 
 
 ## 5️⃣ 사용 기술
